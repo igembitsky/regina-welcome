@@ -1058,7 +1058,7 @@ p { color: var(--text-secondary); line-height: 1.7; }
           <div class="sub-step-num">A</div>
           <div class="sub-step-content">
             <h4>Create a GitHub account</h4>
-            <p>GitHub is where your code lives. Think of it as a cloud drive for your projects, with version history built in.</p>
+            <p>GitHub is like Google Drive but for websites and apps. Everything you build gets saved here so you never lose your work.</p>
             <a href="https://github.com/signup" target="_blank" rel="noopener" class="account-cta">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               Sign up for GitHub
@@ -1069,7 +1069,7 @@ p { color: var(--text-secondary); line-height: 1.7; }
           <div class="sub-step-num">B</div>
           <div class="sub-step-content">
             <h4>Create a Claude account</h4>
-            <p>Claude is your AI collaborator — the one who will write code alongside you, brainstorm ideas, and turn your Figma designs into working prototypes.</p>
+            <p>Claude is your AI design partner. You describe what you want in plain English, and Claude builds it for you — websites, prototypes, anything. Think of it like texting a really talented developer.</p>
             <a href="https://claude.ai/login" target="_blank" rel="noopener" class="account-cta claude-cta">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.85)"/><circle cx="12" cy="12" r="4" fill="currentColor" opacity="0.6"/></svg>
               Sign up for Claude
@@ -1087,7 +1087,7 @@ p { color: var(--text-secondary); line-height: 1.7; }
     <div style="max-width:700px;">
       <div class="step-number" data-anim="fade-up">02</div>
       <div class="step-title" data-anim="fade-up" data-delay="100">Install VS Code</div>
-      <p class="step-desc" data-anim="fade-up" data-delay="150">Your creative studio. This is where you'll see your code, talk to Claude, and preview what you're building.</p>
+      <p class="step-desc" data-anim="fade-up" data-delay="150">This is the app where everything happens — you'll chat with Claude here, and see your website come together inside it.</p>
     </div>
 
     <div style="max-width:700px;" data-anim="fade-up" data-delay="200">
@@ -1126,7 +1126,7 @@ p { color: var(--text-secondary); line-height: 1.7; }
           <div class="sub-step-num">B</div>
           <div class="sub-step-content">
             <h4>Install it</h4>
-            <p>Download the macOS version, open the <code>.dmg</code> file, and drag VS Code into your Applications folder.</p>
+            <p>After downloading, you'll see a file in your Downloads folder. Double-click it to open the installer, then drag the VS Code icon into the Applications folder (just like installing any Mac app).</p>
             <div style="margin:16px 0;" data-anim="scale-up" data-delay="100">
               <div class="file-manager">
                 <div class="mac-titlebar">
@@ -1183,7 +1183,7 @@ p { color: var(--text-secondary); line-height: 1.7; }
     <div style="max-width:700px;">
       <div class="step-number" data-anim="fade-up">03</div>
       <div class="step-title" data-anim="fade-up" data-delay="100">Install Developer Tools</div>
-      <p class="step-desc" data-anim="fade-up" data-delay="150">Two quick terminal commands. These install the plumbing that makes everything else work.</p>
+      <p class="step-desc" data-anim="fade-up" data-delay="150">Two quick things to install behind the scenes. You'll paste some commands into Terminal — that black window from earlier. Just copy, paste, and hit Enter.</p>
     </div>
 
     <div style="max-width:700px;" data-anim="fade-up" data-delay="200">
@@ -1192,14 +1192,14 @@ p { color: var(--text-secondary); line-height: 1.7; }
           <div class="sub-step-num">A</div>
           <div class="sub-step-content">
             <h4>Open Terminal</h4>
-            <p>Press <strong>⌘ Space</strong>, type "Terminal", and open it. This is the command line — don't worry, you'll only need a few commands.</p>
+            <p>Press <strong>⌘ Space</strong> (hold the Command key and tap Space), type "Terminal", and open the app that appears. Terminal is a text-only way to talk to your Mac — you type commands and it does things. It looks like a black or white window with text.</p>
           </div>
         </li>
         <li class="sub-step">
           <div class="sub-step-num">B</div>
           <div class="sub-step-content">
             <h4>Install Homebrew</h4>
-            <p>Homebrew is a package manager — it installs developer tools for you. Paste this into Terminal:</p>
+            <p>Homebrew is a helper that installs other tools for you. Copy the line below, paste it into the Terminal window (⌘V), and press Enter:</p>
             <div class="code-block"><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1222,14 +1222,14 @@ p { color: var(--text-secondary); line-height: 1.7; }
                 </div>
               </div>
             </div>
-            <p style="font-size:0.78rem;">It may ask for your Mac password — that's normal. The password won't appear as you type.</p>
+            <p style="font-size:0.78rem;">It will ask for your Mac password (the one you use to log in). When you type it, nothing will appear on screen — no dots, no stars, nothing. That's normal! Just type your password and press Enter.</p>
           </div>
         </li>
         <li class="sub-step">
           <div class="sub-step-num">C</div>
           <div class="sub-step-content">
             <h4>Install Git</h4>
-            <p>Git tracks changes to your code. Install it with Homebrew:</p>
+            <p>Git keeps a history of every change you make, so you can always go back if something breaks. Install it by pasting this into Terminal:</p>
             <div class="code-block"><code>brew install git</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1256,15 +1256,15 @@ p { color: var(--text-secondary); line-height: 1.7; }
         <li class="sub-step">
           <div class="sub-step-num">D</div>
           <div class="sub-step-content">
-            <h4>Configure Git with your name</h4>
-            <p>Tell Git who you are — this labels your work:</p>
+            <h4>Set your name in Git</h4>
+            <p>This just tells Git your name and email so your work is labeled as yours. Paste these two lines into Terminal (replace the email with yours):</p>
             <div class="code-block"><code>git config --global user.name "Regina Shi"
 git config --global user.email "your-email@example.com"</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
               </button>
             </div>
-            <p style="font-size:0.78rem;">Replace the email with the one you used for GitHub.</p>
+            <p style="font-size:0.78rem;">Use the same email you used when signing up for GitHub.</p>
           </div>
         </li>
       </ol>
@@ -1278,7 +1278,7 @@ git config --global user.email "your-email@example.com"</code>
     <div style="max-width:700px;">
       <div class="step-number" data-anim="fade-up">04</div>
       <div class="step-title" data-anim="fade-up" data-delay="100">Install Claude Code</div>
-      <p class="step-desc" data-anim="fade-up" data-delay="150">This brings Claude directly into VS Code. You'll chat with it, and it'll write code, run commands, and build alongside you.</p>
+      <p class="step-desc" data-anim="fade-up" data-delay="150">This adds Claude to VS Code so you can chat with it right inside the app. You type what you want, Claude builds it.</p>
     </div>
 
     <div style="max-width:700px;" data-anim="fade-up" data-delay="200">
@@ -1287,7 +1287,7 @@ git config --global user.email "your-email@example.com"</code>
           <div class="sub-step-num">A</div>
           <div class="sub-step-content">
             <h4>Open the Extensions panel</h4>
-            <p>In VS Code, press <strong>⌘ Shift X</strong> to open Extensions, then search for "Claude Code".</p>
+            <p>In VS Code, press <strong>⌘ Shift X</strong> (hold Command + Shift, then tap X). This opens the Extensions store — it's like an app store for VS Code add-ons. Type "Claude Code" in the search box at the top.</p>
           </div>
         </li>
         <li class="sub-step">
@@ -1344,7 +1344,7 @@ git config --global user.email "your-email@example.com"</code>
           <div class="sub-step-num">C</div>
           <div class="sub-step-content">
             <h4>Verify installation</h4>
-            <p>Open Terminal and run this to confirm Claude Code is working:</p>
+            <p>Open Terminal again and paste this to make sure it installed correctly:</p>
             <div class="code-block"><code>claude --version</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1364,7 +1364,7 @@ git config --global user.email "your-email@example.com"</code>
     <div style="max-width:700px;">
       <div class="step-number" data-anim="fade-up">05</div>
       <div class="step-title" data-anim="fade-up" data-delay="100">Install Superpowers</div>
-      <p class="step-desc" data-anim="fade-up" data-delay="150">This plugin gives Claude advanced skills — brainstorming, planning, design, and more. It's how you'll design before you code.</p>
+      <p class="step-desc" data-anim="fade-up" data-delay="150">This gives Claude extra abilities — like showing you visual design options in your browser, planning your project step-by-step, and more.</p>
     </div>
 
     <div style="max-width:700px;" data-anim="fade-up" data-delay="200">
@@ -1373,14 +1373,14 @@ git config --global user.email "your-email@example.com"</code>
           <div class="sub-step-num">A</div>
           <div class="sub-step-content">
             <h4>Open the Claude Code panel in VS Code</h4>
-            <p>You should see it in the bottom panel or sidebar after installing the extension.</p>
+            <p>Look for a chat-like area at the bottom or side of VS Code — it should have appeared after you installed Claude Code in the previous step. Click on it to open it.</p>
           </div>
         </li>
         <li class="sub-step">
           <div class="sub-step-num">B</div>
           <div class="sub-step-content">
             <h4>Type the install command</h4>
-            <p>In the Claude Code chat input, type this and hit Enter:</p>
+            <p>In the Claude Code chat area, type this into the text box at the bottom and press Enter:</p>
             <div class="code-block"><code>claude install superpowers</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -1424,14 +1424,14 @@ git config --global user.email "your-email@example.com"</code>
         <li class="sub-step">
           <div class="sub-step-num">C</div>
           <div class="sub-step-content">
-            <h4>Verify skills are loaded</h4>
-            <p>Open Terminal and run:</p>
+            <h4>Make sure it worked</h4>
+            <p>Open Terminal again and paste this:</p>
             <div class="code-block"><code>claude skills</code>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy to clipboard">
                 <svg viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M3 11V3a1.5 1.5 0 011.5-1.5H11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
               </button>
             </div>
-            <p style="font-size:0.78rem;">You should see skills like <span style="color:var(--accent-dark);font-family:var(--font-mono);">brainstorming</span>, <span style="color:var(--accent-dark);font-family:var(--font-mono);">writing-plans</span>, <span style="color:var(--accent-dark);font-family:var(--font-mono);">frontend-design</span>, and more.</p>
+            <p style="font-size:0.78rem;">You should see a list of abilities like <span style="color:var(--accent-dark);font-family:var(--font-mono);">brainstorming</span>, <span style="color:var(--accent-dark);font-family:var(--font-mono);">writing-plans</span>, and <span style="color:var(--accent-dark);font-family:var(--font-mono);">frontend-design</span>. If you see them, you're all set!</p>
           </div>
         </li>
       </ol>
@@ -1622,14 +1622,15 @@ git config --global user.email "your-email@example.com"</code>
   <div class="reveal-cta" style="padding:80px 0;">
     <div class="container" style="text-align:left;max-width:700px;">
       <h3 style="text-align:center;margin-bottom:8px;">Ready to build yours?</h3>
-      <p style="text-align:center;color:#666;font-size:0.85rem;margin-bottom:40px;">Here's exactly how you'd start — three commands and a conversation.</p>
+      <p style="text-align:center;color:#666;font-size:0.85rem;margin-bottom:40px;">Here's exactly how you'd start. Don't worry — Claude walks you through every step.</p>
 
       <!-- Step 1: Create folder -->
       <div data-anim="fade-up" style="margin-bottom:32px;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">1</div>
-          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Create a project folder and open it in VS Code</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Create a new folder for your project</div>
         </div>
+        <p style="font-size:0.8rem;color:#666;margin-bottom:12px;line-height:1.6;">Open Terminal (the same app from Step 3) and paste these two lines. The first one creates a new folder called "my-portfolio" and goes into it. The second one opens that folder in VS Code.</p>
         <div class="terminal" data-terminal>
           <div class="terminal-bar">
             <span class="terminal-dot red"></span>
@@ -1641,7 +1642,7 @@ git config --global user.email "your-email@example.com"</code>
             <div class="terminal-line"><span class="prompt">~ % </span><span class="command">mkdir my-portfolio && cd my-portfolio</span></div>
             <div class="terminal-line"><span class="prompt">my-portfolio % </span><span class="command">code .</span></div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="success">✓ VS Code opens with your new project folder</span></div>
+            <div class="terminal-line"><span class="success">✓ VS Code opens with your new, empty project folder</span></div>
           </div>
         </div>
       </div>
@@ -1650,8 +1651,9 @@ git config --global user.email "your-email@example.com"</code>
       <div data-anim="fade-up" data-delay="100" style="margin-bottom:32px;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">2</div>
-          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Open Claude Code in the panel and start brainstorming</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Tell Claude what you want to build — in plain English</div>
         </div>
+        <p style="font-size:0.8rem;color:#666;margin-bottom:12px;line-height:1.6;">In VS Code, you'll see the Claude Code panel (the chat area you used in Step 5). Just type what you want like you're texting a friend. Claude asks you questions, shows you design options in your browser, and then builds it for you.</p>
         <div class="claude-panel-mockup" style="box-shadow:0 12px 40px rgba(0,0,0,0.4);">
           <div class="mac-titlebar" style="background:#111;">
             <div class="dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
@@ -1668,17 +1670,16 @@ git config --global user.email "your-email@example.com"</code>
             <div style="display:flex;gap:10px;margin-bottom:16px;">
               <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c4a882,#8a7e6b);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;color:white;font-weight:700;">R</span></div>
               <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 16px;flex:1;">
-                <p style="font-size:0.82rem;color:#e4e8f1;margin:0;line-height:1.6;">I want to build my portfolio website. I'm a UX/UI designer and I love minimal, Apple-like aesthetics. I want to showcase 4 case studies and have an about page. Can we brainstorm this?</p>
+                <p style="font-size:0.82rem;color:#e4e8f1;margin:0;line-height:1.6;">I want to build a website to show off my design work. I love clean, minimal aesthetics like Apple's website. I want to show 4 of my best projects and have an about me page. Can you help me design this?</p>
               </div>
             </div>
             <!-- Claude response -->
             <div style="display:flex;gap:10px;margin-bottom:16px;">
               <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#D97757,#c4623f);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;color:white;font-weight:700;">C</span></div>
               <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 16px;flex:1;">
-                <p style="font-size:0.82rem;color:#e4e8f1;margin:0;line-height:1.6;"><span style="color:#c4a882;">Using superpowers:brainstorming skill</span></p>
-                <p style="font-size:0.82rem;color:#8892a8;margin:8px 0 0;line-height:1.6;">Great! Let's design this together. I'll show you some visual mockups in the browser as we go. First question —</p>
-                <p style="font-size:0.82rem;color:#e4e8f1;margin:8px 0 0;line-height:1.6;">What kind of projects do you want to feature? Are these primarily:</p>
-                <p style="font-size:0.82rem;color:#8892a8;margin:6px 0 0;line-height:1.6;">A) Product design (apps, SaaS interfaces)<br>B) Brand & visual design<br>C) A mix of both?</p>
+                <p style="font-size:0.82rem;color:#8892a8;margin:0;line-height:1.6;">Love it! Let's design this together. I'm going to show you some options in your browser so you can see what we're building as we go.</p>
+                <p style="font-size:0.82rem;color:#e4e8f1;margin:8px 0 0;line-height:1.6;">First — what kind of work do you want to show off?</p>
+                <p style="font-size:0.82rem;color:#8892a8;margin:6px 0 0;line-height:1.6;">A) Apps and digital products you've designed<br>B) Logos, branding, and visual identity work<br>C) A mix of both?</p>
               </div>
             </div>
             <!-- Input area -->
@@ -1694,20 +1695,20 @@ git config --global user.email "your-email@example.com"</code>
       <div data-anim="fade-up" data-delay="200" style="margin-bottom:0;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">3</div>
-          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Claude designs with you, then builds it</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Claude designs with you, then builds it — you just keep chatting</div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
           <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
             <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Brainstorm</div>
-            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Shows mockups in your browser. You pick layouts, colors, structure.</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Claude shows you design options in your browser. You pick what you like.</div>
           </div>
           <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
             <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Build</div>
-            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Writes the HTML, CSS, and JS. You see it come together in real time.</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Claude writes all the code for you. You see your website take shape in real time.</div>
           </div>
           <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
             <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Refine</div>
-            <div style="font-size:0.78rem;color:#888;line-height:1.5;">"Make the hero bigger." "Add a dark mode." Just describe what you want.</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">"Make the photo bigger." "Change the background color." Just say what you want changed.</div>
           </div>
         </div>
       </div>
@@ -1723,15 +1724,15 @@ git config --global user.email "your-email@example.com"</code>
   </svg>
 
   <div class="container studio-content">
-    <div class="studio-subtitle" data-anim="fade-up">Your second superpower</div>
+    <div class="studio-subtitle" data-anim="fade-up">Your second superpower — for client work</div>
     <div class="studio-heading" data-anim="fade-up" data-delay="100">From Figma to functional.</div>
     <div class="studio-heading studio-heading-muted" data-anim="fade-up" data-delay="200">In minutes, not weeks.</div>
 
     <div class="studio-demo" data-anim="fade-up" data-delay="300">
       <!-- Left: Figma template -->
       <div class="studio-panel">
-        <div class="studio-panel-label">Your Figma Template</div>
-        <div class="studio-panel-sublabel">Via Figma MCP</div>
+        <div class="studio-panel-label">Your Figma Design</div>
+        <div class="studio-panel-sublabel">Claude reads your Figma files directly</div>
         <div class="wireframe">
           <div class="wireframe-bar" style="width:40%;"></div>
           <div class="wireframe-line" style="width:70%;"></div>
@@ -1776,15 +1777,15 @@ git config --global user.email "your-email@example.com"</code>
     <div class="studio-workflow" data-anim="fade-up" data-delay="400">
       <div class="studio-workflow-step">
         <div class="studio-workflow-num">1. Connect Figma</div>
-        <div class="studio-workflow-desc">Figma MCP reads your templates directly</div>
+        <div class="studio-workflow-desc">Claude connects to your Figma account and reads your designs</div>
       </div>
       <div class="studio-workflow-step">
-        <div class="studio-workflow-num">2. Apply branding</div>
-        <div class="studio-workflow-desc">Tell Claude the client's colors, copy, and style</div>
+        <div class="studio-workflow-num">2. Describe the client</div>
+        <div class="studio-workflow-desc">Tell Claude the brand colors, style, and what text to use</div>
       </div>
       <div class="studio-workflow-step">
-        <div class="studio-workflow-num">3. Get a prototype</div>
-        <div class="studio-workflow-desc">Functional HTML/CSS you can adjust by prompting</div>
+        <div class="studio-workflow-num">3. Get a working website</div>
+        <div class="studio-workflow-desc">Claude builds a real, clickable version you can show the client — and tweak by chatting</div>
       </div>
     </div>
 
@@ -1799,18 +1800,18 @@ git config --global user.email "your-email@example.com"</code>
           <span class="terminal-title">Claude Code — client-project</span>
         </div>
         <div class="terminal-body">
-          <div class="terminal-line"><span class="prompt">you: </span><span class="command">I have a landing page template in Figma for my client Bloom.</span></div>
+          <div class="terminal-line"><span class="prompt">you: </span><span class="command">I have a page design in Figma for my client Bloom.</span></div>
           <div class="terminal-line"><span class="prompt">     </span><span class="command">Their brand colors are forest green and warm orange.</span></div>
-          <div class="terminal-line"><span class="prompt">     </span><span class="command">Can you pull my template and build a prototype with their branding?</span></div>
+          <div class="terminal-line"><span class="prompt">     </span><span class="command">Can you turn it into a real website with their branding?</span></div>
           <div class="terminal-line">&nbsp;</div>
-          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">I'll connect to your Figma file via MCP and pull the template.</span></div>
+          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">On it! Let me connect to your Figma and grab the design.</span></div>
           <div class="terminal-line">&nbsp;</div>
-          <div class="terminal-line"><span class="success">✓ Connected to Figma — reading "Landing Page Template v2"</span></div>
-          <div class="terminal-line"><span class="success">✓ Extracted layout: hero + 3 features + testimonial + CTA</span></div>
-          <div class="terminal-line"><span class="success">✓ Applying Bloom branding: #2d5016, #f4a261, serif headings</span></div>
+          <div class="terminal-line"><span class="success">✓ Connected to Figma — reading "Landing Page Design v2"</span></div>
+          <div class="terminal-line"><span class="success">✓ Got the layout — header, main section, 3 feature blocks, footer</span></div>
+          <div class="terminal-line"><span class="success">✓ Applying Bloom's green and orange branding...</span></div>
           <div class="terminal-line">&nbsp;</div>
-          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">Done! I've created index.html with Bloom's branding applied.</span></div>
-          <div class="terminal-line"><span class="muted">         Open it in your browser to preview. Want me to adjust anything?</span></div>
+          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">Done! Your website is ready to preview.</span></div>
+          <div class="terminal-line"><span class="muted">         Open it in your browser to see it. Want me to change anything?</span></div>
         </div>
       </div>
     </div>
@@ -1822,18 +1823,18 @@ git config --global user.email "your-email@example.com"</code>
   <div class="container">
     <div class="label" data-anim="fade-up">Don't worry</div>
     <h2 data-anim="fade-up" data-delay="100">If you get stuck</h2>
-    <p data-anim="fade-up" data-delay="150" style="max-width:450px;margin:8px auto 0;">Think of Claude as a senior engineer sitting right next to you. Just explain what's happening and ask for help.</p>
+    <p data-anim="fade-up" data-delay="150" style="max-width:450px;margin:8px auto 0;">Getting stuck is normal — it happens to everyone. Here's what to do.</p>
 
     <div class="stuck-cards" data-anim="fade-up" data-delay="250">
       <div class="stuck-card">
         <div class="stuck-card-icon">💬</div>
         <h3>Ask Claude</h3>
-        <p>Paste the error, explain what you tried</p>
+        <p>Tell Claude what went wrong — it can usually fix it</p>
       </div>
       <div class="stuck-card">
         <div class="stuck-card-icon">📖</div>
         <h3>Check Docs</h3>
-        <p>Claude can search documentation for you</p>
+        <p>Ask Claude to look things up — it reads guides for you</p>
       </div>
       <div class="stuck-card">
         <div class="stuck-card-icon">📱</div>
