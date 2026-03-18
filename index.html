@@ -1617,10 +1617,99 @@ git config --global user.email "your-email@example.com"</code>
   </div>
 
   <!-- CTA -->
-  <div class="reveal-cta">
-    <div class="container">
-      <h3>Ready to build yours?</h3>
-      <button class="reveal-cta-btn">Open Claude Code →</button>
+  <!-- How to start building -->
+  <div class="reveal-cta" style="padding:80px 0;">
+    <div class="container" style="text-align:left;max-width:700px;">
+      <h3 style="text-align:center;margin-bottom:8px;">Ready to build yours?</h3>
+      <p style="text-align:center;color:#666;font-size:0.85rem;margin-bottom:40px;">Here's exactly how you'd start — three commands and a conversation.</p>
+
+      <!-- Step 1: Create folder -->
+      <div data-anim="fade-up" style="margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">1</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Create a project folder and open it in VS Code</div>
+        </div>
+        <div class="terminal" data-terminal>
+          <div class="terminal-bar">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">Terminal — zsh</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line"><span class="prompt">~ % </span><span class="command">mkdir my-portfolio && cd my-portfolio</span></div>
+            <div class="terminal-line"><span class="prompt">my-portfolio % </span><span class="command">code .</span></div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line"><span class="success">✓ VS Code opens with your new project folder</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Start Claude -->
+      <div data-anim="fade-up" data-delay="100" style="margin-bottom:32px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">2</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Open Claude Code in the panel and start brainstorming</div>
+        </div>
+        <div class="claude-panel-mockup" style="box-shadow:0 12px 40px rgba(0,0,0,0.4);">
+          <div class="mac-titlebar" style="background:#111;">
+            <div class="dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+            <div class="title">Claude Code — my-portfolio</div>
+            <div style="width:36px;"></div>
+          </div>
+          <div class="claude-panel-header" style="background:#0d1117;">
+            <div class="claude-panel-tab active">Claude Code</div>
+            <div class="claude-panel-tab">Terminal</div>
+            <div class="claude-panel-tab">Output</div>
+          </div>
+          <div class="claude-panel-body" style="background:#1e1e2e;padding:24px;">
+            <!-- User message -->
+            <div style="display:flex;gap:10px;margin-bottom:16px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c4a882,#8a7e6b);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;color:white;font-weight:700;">R</span></div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-size:0.82rem;color:#e4e8f1;margin:0;line-height:1.6;">I want to build my portfolio website. I'm a UX/UI designer and I love minimal, Apple-like aesthetics. I want to showcase 4 case studies and have an about page. Can we brainstorm this?</p>
+              </div>
+            </div>
+            <!-- Claude response -->
+            <div style="display:flex;gap:10px;margin-bottom:16px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#D97757,#c4623f);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><span style="font-size:12px;color:white;font-weight:700;">C</span></div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 16px;flex:1;">
+                <p style="font-size:0.82rem;color:#e4e8f1;margin:0;line-height:1.6;"><span style="color:#c4a882;">Using superpowers:brainstorming skill</span></p>
+                <p style="font-size:0.82rem;color:#8892a8;margin:8px 0 0;line-height:1.6;">Great! Let's design this together. I'll show you some visual mockups in the browser as we go. First question —</p>
+                <p style="font-size:0.82rem;color:#e4e8f1;margin:8px 0 0;line-height:1.6;">What kind of projects do you want to feature? Are these primarily:</p>
+                <p style="font-size:0.82rem;color:#8892a8;margin:6px 0 0;line-height:1.6;">A) Product design (apps, SaaS interfaces)<br>B) Brand & visual design<br>C) A mix of both?</p>
+              </div>
+            </div>
+            <!-- Input area -->
+            <div class="claude-input-area" style="border-color:rgba(196,168,130,0.3);">
+              <div class="claude-input-text" style="color:#555;font-size:0.8rem;">Type your answer...</div>
+              <div class="claude-send-btn"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10m0 0L8 3m4 4L8 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: What happens next -->
+      <div data-anim="fade-up" data-delay="200" style="margin-bottom:0;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="width:24px;height:24px;border-radius:50%;background:#222;color:#666;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;">3</div>
+          <div style="font-size:0.85rem;color:#ccc;font-weight:500;">Claude designs with you, then builds it</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+          <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
+            <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Brainstorm</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Shows mockups in your browser. You pick layouts, colors, structure.</div>
+          </div>
+          <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
+            <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Build</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">Writes the HTML, CSS, and JS. You see it come together in real time.</div>
+          </div>
+          <div style="background:#141414;border:1px solid #222;border-radius:10px;padding:16px;">
+            <div style="font-size:0.6rem;color:#444;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Refine</div>
+            <div style="font-size:0.78rem;color:#888;line-height:1.5;">"Make the hero bigger." "Add a dark mode." Just describe what you want.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1695,6 +1784,33 @@ git config --global user.email "your-email@example.com"</code>
       <div class="studio-workflow-step">
         <div class="studio-workflow-num">3. Get a prototype</div>
         <div class="studio-workflow-desc">Functional HTML/CSS you can adjust by prompting</div>
+      </div>
+    </div>
+
+    <!-- How it looks in practice -->
+    <div style="margin-top:48px;" data-anim="fade-up" data-delay="500">
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;font-weight:500;">Here's what it looks like in practice:</p>
+      <div class="terminal" data-terminal style="box-shadow:0 8px 32px rgba(44,36,24,0.12);">
+        <div class="terminal-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">Claude Code — client-project</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">you: </span><span class="command">I have a landing page template in Figma for my client Bloom.</span></div>
+          <div class="terminal-line"><span class="prompt">     </span><span class="command">Their brand colors are forest green and warm orange.</span></div>
+          <div class="terminal-line"><span class="prompt">     </span><span class="command">Can you pull my template and build a prototype with their branding?</span></div>
+          <div class="terminal-line">&nbsp;</div>
+          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">I'll connect to your Figma file via MCP and pull the template.</span></div>
+          <div class="terminal-line">&nbsp;</div>
+          <div class="terminal-line"><span class="success">✓ Connected to Figma — reading "Landing Page Template v2"</span></div>
+          <div class="terminal-line"><span class="success">✓ Extracted layout: hero + 3 features + testimonial + CTA</span></div>
+          <div class="terminal-line"><span class="success">✓ Applying Bloom branding: #2d5016, #f4a261, serif headings</span></div>
+          <div class="terminal-line">&nbsp;</div>
+          <div class="terminal-line"><span class="highlight">claude: </span><span class="muted">Done! I've created index.html with Bloom's branding applied.</span></div>
+          <div class="terminal-line"><span class="muted">         Open it in your browser to preview. Want me to adjust anything?</span></div>
+        </div>
       </div>
     </div>
   </div>
