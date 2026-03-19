@@ -700,7 +700,8 @@ p { color: var(--text-secondary); line-height: 1.7; }
   scroll-snap-align: start;
   transition: border-color 0.3s ease;
 }
-.portfolio-card:hover { border-color: #333; }
+a.portfolio-card { text-decoration: none; color: inherit; cursor: pointer; }
+a.portfolio-card:hover { border-color: #444; transform: translateY(-2px); }
 .portfolio-card-preview {
   height: 200px;
   display: flex;
@@ -710,12 +711,45 @@ p { color: var(--text-secondary); line-height: 1.7; }
   overflow: hidden;
 }
 .portfolio-card-body { padding: 20px; }
-.portfolio-card-name { font-size: 0.95rem; color: #eee; font-weight: 500; margin-bottom: 8px; }
-.portfolio-card-desc { font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 16px; }
-.portfolio-decode { padding-top: 16px; border-top: 1px solid #222; }
-.portfolio-decode-label { font-size: 0.6rem; color: #444; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-.portfolio-decode-list { font-size: 0.78rem; color: #555; line-height: 1.6; padding-left: 0; list-style: none; }
-.portfolio-decode-list li::before { content: "· "; color: #444; }
+.portfolio-card-name { font-size: 0.95rem; color: #eee; font-weight: 500; margin-bottom: 4px; }
+.portfolio-card-role { font-size: 0.72rem; color: #555; margin-bottom: 10px; line-height: 1.4; }
+.portfolio-card-desc { font-size: 0.8rem; color: #666; line-height: 1.5; margin-bottom: 0; }
+.portfolio-card-cta { font-size: 0.72rem; color: #c4a882; margin-top: 14px; opacity: 0.5; transition: opacity 0.3s; }
+a.portfolio-card:hover .portfolio-card-cta { opacity: 1; }
+
+/* Carousel container & nav arrows */
+.portfolio-strip-container { position: relative; }
+.portfolio-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: rgba(20,20,20,0.9);
+  color: #888;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.3s, color 0.3s;
+  backdrop-filter: blur(8px);
+}
+.portfolio-strip-container:hover .portfolio-nav { opacity: 1; }
+.portfolio-nav:hover { background: rgba(40,40,40,0.95); color: #ccc; border-color: #555; }
+.portfolio-nav-prev { left: 12px; }
+.portfolio-nav-next { right: 12px; }
+.desktop-only { display: inline; }
+.mobile-only { display: none; }
+@media (max-width: 768px) {
+  .portfolio-nav { display: none; }
+  .desktop-only { display: none; }
+  .mobile-only { display: inline; }
+}
 
 /* Reveal CTA */
 .reveal-cta {
@@ -1469,151 +1503,116 @@ git config --global user.email "your-email@example.com"</code>
     </div>
   </div>
 
-  <!-- Horizontal Scroll Strip -->
+  <!-- Portfolio Showcase Carousel -->
   <div class="portfolio-strip-wrap">
-    <div class="portfolio-strip-label">Swipe to explore ←→ <span class="mobile-hide"></span></div>
-    <div class="portfolio-strip" id="portfolio-strip">
+    <div class="portfolio-strip-label">
+      <span class="desktop-only">Portfolios worth studying</span>
+      <span class="mobile-only">Swipe to explore ←→</span>
+    </div>
+    <div class="portfolio-strip-container">
+      <button class="portfolio-nav portfolio-nav-prev" aria-label="Previous">‹</button>
+      <div class="portfolio-strip" id="portfolio-strip">
 
-      <!-- Card 1: Jony Ive School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: linear-gradient(135deg, #f8f8f8, #e8e6e1);">
-          <div style="text-align:center;">
-            <div style="font-size:1.5rem;font-weight:100;color:#1a1a1a;letter-spacing:-1px;">Minimal</div>
-            <div style="font-size:0.6rem;color:#999;letter-spacing:3px;text-transform:uppercase;margin-top:6px;">Product-first</div>
+        <!-- 1: Dennis Snellenberg -->
+        <a href="https://dennissnellenberg.com" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: linear-gradient(135deg, #f8f8f8, #e8e2d8);">
+            <div style="text-align:center;">
+              <div style="font-size:1.8rem;font-weight:100;color:#1a1a1a;letter-spacing:-1px;">clean.</div>
+              <div style="width:40px;height:1px;background:#ccc;margin:10px auto 0;"></div>
+            </div>
           </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Jony Ive School</div>
-          <div class="portfolio-card-desc">White space as a statement. Let the work breathe. Zero decoration — the product IS the portfolio.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>Full-bleed product imagery</li>
-              <li>System font stacks for clarity</li>
-              <li>Maximum 2 colors</li>
-              <li>Typography does all the heavy lifting</li>
-            </ul>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Dennis Snellenberg</div>
+            <div class="portfolio-card-role">Freelance Designer · Awwwards Jury · Rotterdam</div>
+            <div class="portfolio-card-desc">The gold standard for minimal portfolios. Silky-smooth parallax, custom cursor, every micro-animation feels intentional. Awwwards Site of the Day.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
           </div>
-        </div>
+        </a>
+
+        <!-- 2: Bruno Simon -->
+        <a href="https://bruno-simon.com" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: #0a0a14; position:relative;">
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 55% 45%, rgba(120,80,255,0.12), transparent 55%);"></div>
+            <div style="text-align:center;position:relative;">
+              <div style="font-size:1.8rem;font-weight:100;color:#ccc;letter-spacing:-1px;">play.</div>
+              <div style="width:40px;height:1px;background:#333;margin:10px auto 0;"></div>
+            </div>
+          </div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Bruno Simon</div>
+            <div class="portfolio-card-role">Creative Developer · Three.js Educator · Paris</div>
+            <div class="portfolio-card-desc">The entire portfolio is a 3D game — you drive a toy car around a miniature world to explore his work. The most iconic portfolio site ever made.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
+          </div>
+        </a>
+
+        <!-- 3: Lusion -->
+        <a href="https://lusion.co" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: #0d0d12; position:relative;">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(80,60,120,0.1), rgba(40,100,120,0.08), transparent);"></div>
+            <div style="text-align:center;position:relative;">
+              <div style="font-size:1.8rem;font-weight:100;color:#aaa;letter-spacing:-1px;">immerse.</div>
+              <div style="width:40px;height:1px;background:#333;margin:10px auto 0;"></div>
+            </div>
+          </div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Lusion</div>
+            <div class="portfolio-card-role">Creative Studio · Awwwards Site of the Year 2024 · London</div>
+            <div class="portfolio-card-desc">Immersive 3D storytelling with fluid simulations and an astronaut that follows your cursor. D&AD Pencil winner. The most awarded portfolio site in recent years.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
+          </div>
+        </a>
+
+        <!-- 4: Craig Dehner -->
+        <a href="https://craigdehner.com" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: linear-gradient(135deg, #fafafa, #f0f0f0);">
+            <div style="text-align:center;">
+              <div style="font-size:1.8rem;font-weight:100;color:#1a1a1a;letter-spacing:-1px;">move.</div>
+              <div style="width:40px;height:1px;background:#ddd;margin:10px auto 0;"></div>
+            </div>
+          </div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Craig Dehner</div>
+            <div class="portfolio-card-role">UI & Motion Designer · ex-Apple HI Team (under Jony Ive)</div>
+            <div class="portfolio-card-desc">Designed iOS 7, Siri, and 3D Touch at Apple. His portfolio proves motion is a core design discipline, not decoration. Apple → Airbnb → Cash App.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
+          </div>
+        </a>
+
+        <!-- 5: Tobias van Schneider -->
+        <a href="https://vanschneider.com" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: #111;">
+            <div style="text-align:center;">
+              <div style="font-size:2rem;font-weight:800;color:white;letter-spacing:-2px;line-height:0.9;">bold.</div>
+              <div style="width:40px;height:1px;background:#333;margin:10px auto 0;"></div>
+            </div>
+          </div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Tobias van Schneider</div>
+            <div class="portfolio-card-role">Creative Director · ex-Spotify · Built Semplice · NYC</div>
+            <div class="portfolio-card-desc">Led Spotify's design as it grew from 15M to 70M+ users. Then built Semplice — the portfolio tool thousands of designers use. Editorial, dark, and confident.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
+          </div>
+        </a>
+
+        <!-- 6: Cyd Stumpel -->
+        <a href="https://cydstumpel.nl" target="_blank" rel="noopener" class="portfolio-card">
+          <div class="portfolio-card-preview" style="background: #fafafa;">
+            <div style="text-align:center;">
+              <div style="font-size:1.8rem;font-weight:200;color:#1a1a1a;letter-spacing:1px;">craft.</div>
+              <div style="width:40px;height:1px;background:#ddd;margin:10px auto 0;"></div>
+            </div>
+          </div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-name">Cyd Stumpel</div>
+            <div class="portfolio-card-role">Creative Developer · Multiple Awwwards SOTD · Amsterdam</div>
+            <div class="portfolio-card-desc">Rebuilds her portfolio from scratch every time, and each version pushes CSS to its limits. Proof that sustained craft wins awards across years, not just once.</div>
+            <div class="portfolio-card-cta">Visit portfolio ↗</div>
+          </div>
+        </a>
+
       </div>
-
-      <!-- Card 2: Joseph Santamaria School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: #0a0a14; position:relative;">
-          <div style="position:absolute;inset:0;background:radial-gradient(circle at 60% 40%, rgba(100,100,255,0.08), transparent 60%);"></div>
-          <div style="text-align:center;position:relative;">
-            <div style="font-size:1.5rem;font-weight:100;color:#ccc;letter-spacing:-1px;">Immersive</div>
-            <div style="font-size:0.6rem;color:#555;letter-spacing:3px;text-transform:uppercase;margin-top:6px;">Scroll-driven</div>
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Joseph Santamaria School</div>
-          <div class="portfolio-card-desc">3D, motion, sound. The portfolio is a world you inhabit, not a page you browse.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>GSAP + Three.js for dimensionality</li>
-              <li>Full-viewport scenes</li>
-              <li>Progressive reveal on scroll</li>
-              <li>Sound design for atmosphere</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Julie Zhuo School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: linear-gradient(135deg, #f0ede6, #e8e2d8); position:relative;">
-          <div style="width:60px;height:60px;border:1px solid rgba(0,0,0,0.08);border-radius:50%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.3;"></div>
-          <div style="text-align:center;position:relative;">
-            <div style="font-size:1.5rem;font-weight:100;color:#1a1a1a;letter-spacing:-1px;">Narrative</div>
-            <div style="font-size:0.6rem;color:#999;letter-spacing:3px;text-transform:uppercase;margin-top:6px;">Case-study</div>
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Julie Zhuo School</div>
-          <div class="portfolio-card-desc">Story first. Each project is a case study: problem, process, solution, impact. The writing does the work.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>Long-form case studies with narrative arc</li>
-              <li>Process photography and sketches</li>
-              <li>Metrics and business outcomes</li>
-              <li>Personal voice throughout</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Adrien Lamy School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: #1a1a1a;">
-          <div style="text-align:center;">
-            <div style="font-size:2.2rem;font-weight:800;color:white;letter-spacing:-2px;line-height:0.9;">BOLD<br>TYPE</div>
-            <div style="font-size:0.6rem;color:#555;letter-spacing:3px;text-transform:uppercase;margin-top:8px;">Expressive</div>
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Adrien Lamy School</div>
-          <div class="portfolio-card-desc">Typography as personality. Dynamic layouts, motion experiments, visual collages. The portfolio has energy.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>Custom or variable fonts at extreme weights</li>
-              <li>Kinetic typography on scroll</li>
-              <li>Mixed-media layouts</li>
-              <li>Strong personal graphic identity</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: Olha Lazarieva School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: #fafafa;">
-          <div style="text-align:center;">
-            <div style="font-size:1.5rem;font-weight:200;color:#1a1a1a;letter-spacing:2px;">Refined</div>
-            <div style="font-size:0.6rem;color:#999;letter-spacing:3px;text-transform:uppercase;margin-top:6px;">Craft</div>
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Olha Lazarieva School</div>
-          <div class="portfolio-card-desc">Refined aesthetics, minimal layouts. Every pixel considered. The craftsmanship speaks for itself.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>Cohesive visual system across all pages</li>
-              <li>Restrained color palette</li>
-              <li>Pixel-perfect attention to detail</li>
-              <li>UI/UX + branding work showcased together</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6: Clay Boan School -->
-      <div class="portfolio-card">
-        <div class="portfolio-card-preview" style="background: linear-gradient(135deg, #e8e6e1, #d4d0c8);">
-          <div style="text-align:center;">
-            <div style="font-size:1.5rem;font-weight:100;color:#1a1a1a;letter-spacing:-1px;">Luxury</div>
-            <div style="font-size:0.6rem;color:#999;letter-spacing:3px;text-transform:uppercase;margin-top:6px;">Brand-forward</div>
-          </div>
-        </div>
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">The Clay Boan School</div>
-          <div class="portfolio-card-desc">Nike, Gucci, Apple — the client list IS the portfolio. Bold visuals with thoughtful motion. Premium energy.</div>
-          <div class="portfolio-decode">
-            <div class="portfolio-decode-label">Design Decode</div>
-            <ul class="portfolio-decode-list">
-              <li>Client logos as social proof</li>
-              <li>Motion-rich project reveals</li>
-              <li>Dark/light mode contrast</li>
-              <li>Collaborative work highlighted</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+      <button class="portfolio-nav portfolio-nav-next" aria-label="Next">›</button>
     </div>
   </div>
 
@@ -1884,6 +1883,15 @@ window.addEventListener('load', () => {
 
 /* ===== REDUCED MOTION CHECK ===== */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===== PORTFOLIO CAROUSEL NAV ===== */
+document.querySelectorAll('.portfolio-nav').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const strip = document.getElementById('portfolio-strip');
+    const dir = btn.classList.contains('portfolio-nav-next') ? 1 : -1;
+    strip.scrollBy({ left: dir * 380, behavior: 'smooth' });
+  });
+});
 
 /* ===== SCROLL ANIMATION OBSERVER ===== */
 const animObserver = new IntersectionObserver((entries) => {
