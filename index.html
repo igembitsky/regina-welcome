@@ -246,10 +246,10 @@ p { color: var(--text-secondary); line-height: 1.7; }
 /* ===== PARAMETRIC PROGRESS CURVE ===== */
 .progress-twig {
   position: fixed;
-  left: 18px;
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
+  width: 56px;
   height: 420px;
   z-index: 100;
   opacity: 0;
@@ -267,53 +267,153 @@ p { color: var(--text-secondary); line-height: 1.7; }
   stroke-linecap: round;
 }
 
-/* Leaves */
+/* Leaves — sprout from scale(0) to scale(1) */
 .twig-leaf {
   fill: #a09078;
-  opacity: 0.25;
-  transform-origin: center;
-  transition: opacity 0.6s ease, fill 0.6s ease;
-}
-.twig-leaf.active {
-  fill: #7a8c5a;
-  opacity: 0.85;
-}
-/* Subtle idle sway — each leaf gets a slightly different animation */
-@keyframes leaf-sway-1 {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(4deg); }
-}
-@keyframes leaf-sway-2 {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-5deg); }
-}
-@keyframes leaf-sway-3 {
-  0%, 100% { transform: rotate(0deg); }
-  40% { transform: rotate(3deg); }
+  opacity: 0;
+  transition: opacity 0.8s ease, fill 0.8s ease;
 }
 .twig-leaf-wrap {
-  animation: leaf-sway-1 4s ease-in-out infinite;
+  transform: scale(0);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.twig-leaf-wrap:nth-child(2n) { animation-name: leaf-sway-2; animation-duration: 4.5s; }
-.twig-leaf-wrap:nth-child(3n) { animation-name: leaf-sway-3; animation-duration: 5s; }
+.twig-leaf-wrap.sprouted {
+  transform: scale(1);
+}
+.twig-leaf-wrap.sprouted .twig-leaf {
+  opacity: 0.35;
+  fill: #a09078;
+}
+.twig-leaf-wrap.active .twig-leaf {
+  fill: #6b8f3c;
+  opacity: 0.9;
+}
 
-/* Flutter burst when a leaf activates */
+/* Idle sway — 4 variations for organic feel */
+@keyframes sway-a { 0%,100%{transform:rotate(0deg)}50%{transform:rotate(4deg)} }
+@keyframes sway-b { 0%,100%{transform:rotate(0deg)}50%{transform:rotate(-5deg)} }
+@keyframes sway-c { 0%,100%{transform:rotate(0deg)}40%{transform:rotate(3.5deg)} }
+@keyframes sway-d { 0%,100%{transform:rotate(0deg)}60%{transform:rotate(-3deg)} }
+.twig-leaf-wrap.idle { animation: sway-a 4s ease-in-out infinite; }
+.twig-leaf-wrap.idle:nth-child(2n) { animation-name: sway-b; animation-duration: 4.6s; }
+.twig-leaf-wrap.idle:nth-child(3n) { animation-name: sway-c; animation-duration: 5.2s; }
+.twig-leaf-wrap.idle:nth-child(5n) { animation-name: sway-d; animation-duration: 3.8s; }
+
+/* Sprout burst — a bouncier entrance */
+@keyframes leaf-sprout {
+  0% { transform: scale(0) rotate(-20deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  70% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.twig-leaf-wrap.sprouting {
+  animation: leaf-sprout 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Flutter when active */
 @keyframes leaf-flutter {
-  0% { transform: rotate(0deg) scale(1); }
-  20% { transform: rotate(-8deg) scale(1.15); }
-  40% { transform: rotate(6deg) scale(1.05); }
-  60% { transform: rotate(-3deg) scale(1.1); }
-  80% { transform: rotate(2deg) scale(1.02); }
-  100% { transform: rotate(0deg) scale(1); }
+  0% { transform: scale(1) rotate(0deg); }
+  15% { transform: scale(1.12) rotate(-6deg); }
+  30% { transform: scale(1.05) rotate(5deg); }
+  50% { transform: scale(1.1) rotate(-3deg); }
+  70% { transform: scale(1.02) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
 }
 .twig-leaf-wrap.flutter {
-  animation: leaf-flutter 0.8s ease-out forwards;
+  animation: leaf-flutter 0.9s ease-out forwards;
+}
+
+/* ===== FLOWER (Step 3) ===== */
+.twig-flower {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.twig-flower.bloomed {
+  opacity: 1;
+  transform: scale(1);
+}
+.twig-flower-petal {
+  fill: #d4a0b0;
+  opacity: 0.7;
+}
+.twig-flower-center {
+  fill: #e8c86a;
+}
+@keyframes flower-sway {
+  0%,100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+}
+.twig-flower.bloomed { animation: flower-sway 5s ease-in-out infinite; }
+
+/* ===== BEE (appears near flower) ===== */
+@keyframes bee-flight {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  10% { transform: translate(2px, -3px) scale(1); opacity: 1; }
+  25% { transform: translate(8px, -10px) scale(1); opacity: 1; }
+  40% { transform: translate(4px, -6px) scale(1); opacity: 1; }
+  55% { transform: translate(12px, -14px) scale(1); opacity: 1; }
+  70% { transform: translate(16px, -18px) scale(0.9); opacity: 0.8; }
+  85% { transform: translate(22px, -24px) scale(0.7); opacity: 0.4; }
+  100% { transform: translate(28px, -30px) scale(0.4); opacity: 0; }
+}
+@keyframes bee-wings {
+  0%,100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.3); }
+}
+.twig-bee { opacity: 0; }
+.twig-bee.flying {
+  animation: bee-flight 2.5s ease-out forwards;
+}
+.twig-bee-wing {
+  fill: rgba(255,255,255,0.5);
+  animation: bee-wings 0.08s ease-in-out infinite;
+}
+.twig-bee-body { fill: #c4a832; }
+.twig-bee-stripe { fill: #333; }
+
+/* ===== HUMMINGBIRD (appears near flower on step 4) ===== */
+@keyframes hbird-approach {
+  0% { transform: translate(30px, -20px) scale(0.3); opacity: 0; }
+  20% { transform: translate(12px, -8px) scale(0.9); opacity: 0.9; }
+  35% { transform: translate(4px, -2px) scale(1); opacity: 1; }
+  50% { transform: translate(2px, 0px) scale(1); opacity: 1; }
+  65% { transform: translate(3px, -1px) scale(1); opacity: 1; }
+  80% { transform: translate(14px, -10px) scale(0.8); opacity: 0.6; }
+  100% { transform: translate(30px, -20px) scale(0.3); opacity: 0; }
+}
+@keyframes hbird-wings {
+  0%,100% { transform: rotate(0deg) scaleX(1); }
+  50% { transform: rotate(-15deg) scaleX(0.6); }
+}
+.twig-hbird { opacity: 0; }
+.twig-hbird.visiting {
+  animation: hbird-approach 3s ease-in-out forwards;
+}
+.twig-hbird-body { fill: #5a8c6b; }
+.twig-hbird-belly { fill: #b8c8b0; }
+.twig-hbird-beak { fill: #555; }
+.twig-hbird-wing {
+  fill: rgba(90, 140, 107, 0.5);
+  transform-origin: 4px 3px;
+  animation: hbird-wings 0.06s ease-in-out infinite;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .twig-leaf-wrap { animation: none !important; }
-  .twig-leaf-wrap.flutter { animation: none !important; }
+  .twig-leaf-wrap,
+  .twig-leaf-wrap.sprouting,
+  .twig-leaf-wrap.flutter,
+  .twig-leaf-wrap.idle,
+  .twig-flower.bloomed,
+  .twig-bee.flying,
+  .twig-hbird.visiting {
+    animation: none !important;
+  }
+  .twig-bee-wing, .twig-hbird-wing { animation: none !important; }
+  .twig-leaf-wrap.sprouted { transform: scale(1); }
+  .twig-flower.bloomed { transform: scale(1); opacity: 1; }
 }
 
 /* ===== SETUP SECTIONS ===== */
@@ -1082,44 +1182,113 @@ a.portfolio-card:hover .portfolio-card-cta { opacity: 1; }
 
 <!-- Twig Progress Indicator (setup zone only) -->
 <div class="progress-twig" id="progress-twig">
-  <svg viewBox="0 0 40 420" fill="none">
-    <!-- Main branch — organic, slightly wobbly -->
-    <path class="twig-branch" d="M20,10 Q22,50 19,90 Q16,130 20,170 Q24,210 18,250 Q14,290 20,330 Q24,365 20,400" opacity="0.3"/>
-    <!-- Smaller side branches -->
-    <path class="twig-branch" d="M19,85 Q14,75 10,68" opacity="0.2" stroke-width="0.8"/>
-    <path class="twig-branch" d="M20,165 Q26,155 30,148" opacity="0.2" stroke-width="0.8"/>
-    <path class="twig-branch" d="M19,245 Q13,237 9,230" opacity="0.2" stroke-width="0.8"/>
-    <path class="twig-branch" d="M20,325 Q27,317 31,310" opacity="0.2" stroke-width="0.8"/>
-    <path class="twig-branch" d="M20,395 Q14,387 10,380" opacity="0.2" stroke-width="0.8"/>
+  <svg viewBox="0 0 56 420" fill="none">
+    <!-- Main branch — organic, gently S-curved -->
+    <path class="twig-branch" d="M28,8 Q30,40 26,78 Q22,115 28,158 Q34,200 26,240 Q18,280 28,322 Q36,358 28,400" opacity="0.3"/>
+    <!-- Fine sub-branches at each node -->
+    <path class="twig-branch" d="M27,72 Q20,62 14,56" opacity="0.18" stroke-width="0.7"/>
+    <path class="twig-branch" d="M27,78 Q34,70 40,66" opacity="0.15" stroke-width="0.6"/>
+    <path class="twig-branch" d="M28,152 Q36,142 42,136" opacity="0.18" stroke-width="0.7"/>
+    <path class="twig-branch" d="M28,158 Q20,150 14,146" opacity="0.15" stroke-width="0.6"/>
+    <path class="twig-branch" d="M26,234 Q18,224 12,218" opacity="0.18" stroke-width="0.7"/>
+    <path class="twig-branch" d="M27,240 Q34,232 40,226" opacity="0.15" stroke-width="0.6"/>
+    <path class="twig-branch" d="M28,316 Q36,306 42,300" opacity="0.18" stroke-width="0.7"/>
+    <path class="twig-branch" d="M28,322 Q20,314 14,308" opacity="0.15" stroke-width="0.6"/>
+    <path class="twig-branch" d="M28,394 Q20,384 14,378" opacity="0.18" stroke-width="0.7"/>
+    <path class="twig-branch" d="M28,398 Q35,390 40,386" opacity="0.15" stroke-width="0.6"/>
+    <!-- Tiny extra twiglets -->
+    <path class="twig-branch" d="M27,42 Q24,36 22,32" opacity="0.1" stroke-width="0.5"/>
+    <path class="twig-branch" d="M28,118 Q31,112 34,108" opacity="0.1" stroke-width="0.5"/>
+    <path class="twig-branch" d="M26,278 Q23,272 20,268" opacity="0.1" stroke-width="0.5"/>
+    <path class="twig-branch" d="M28,360 Q31,354 34,350" opacity="0.1" stroke-width="0.5"/>
 
-    <!-- Leaf 1 (Step 1 — top) -->
-    <g class="twig-leaf-wrap" data-leaf="0" style="transform-origin: 19px 80px;">
-      <path class="twig-leaf" d="M19,80 Q10,68 6,58 Q12,62 19,72 Q18,60 14,50 Q22,62 19,80Z"/>
-      <path class="twig-leaf" d="M19,80 Q25,70 30,62 Q26,68 21,74 Q27,64 32,56 Q24,68 19,80Z" opacity="0.18"/>
+    <!-- ===== LEAF CLUSTER 1 (Step 1) ===== -->
+    <g class="twig-leaf-wrap" data-leaf="0" style="transform-origin: 27px 75px;">
+      <!-- Left leaf pair -->
+      <path class="twig-leaf" d="M27,75 Q18,63 12,54 Q18,60 25,70Z"/>
+      <path class="twig-leaf" d="M27,75 Q16,68 10,62 Q17,66 25,73Z" style="opacity:0.7"/>
+      <!-- Right leaf -->
+      <path class="twig-leaf" d="M27,75 Q35,64 42,58 Q36,66 29,72Z"/>
+      <!-- Small bud -->
+      <ellipse class="twig-leaf" cx="14" cy="55" rx="2" ry="3.5" transform="rotate(-20 14 55)" style="opacity:0.5"/>
     </g>
 
-    <!-- Leaf 2 (Step 2) -->
-    <g class="twig-leaf-wrap" data-leaf="1" style="transform-origin: 20px 160px;">
-      <path class="twig-leaf" d="M20,160 Q28,148 33,140 Q28,150 22,156 Q30,146 35,138 Q26,152 20,160Z"/>
-      <path class="twig-leaf" d="M20,160 Q14,150 10,142 Q14,152 19,156 Q12,148 8,140 Q16,152 20,160Z" opacity="0.18"/>
+    <!-- ===== LEAF CLUSTER 2 (Step 2) ===== -->
+    <g class="twig-leaf-wrap" data-leaf="1" style="transform-origin: 28px 155px;">
+      <!-- Right leaves -->
+      <path class="twig-leaf" d="M28,155 Q38,143 44,135 Q38,145 30,152Z"/>
+      <path class="twig-leaf" d="M28,155 Q40,147 46,140 Q39,148 31,153Z" style="opacity:0.6"/>
+      <!-- Left leaf -->
+      <path class="twig-leaf" d="M28,155 Q18,145 12,138 Q19,146 26,153Z"/>
+      <!-- Tiny leaf above -->
+      <path class="twig-leaf" d="M30,148 Q34,140 38,135 Q34,142 31,147Z" style="opacity:0.4"/>
     </g>
 
-    <!-- Leaf 3 (Step 3) -->
-    <g class="twig-leaf-wrap" data-leaf="2" style="transform-origin: 19px 240px;">
-      <path class="twig-leaf" d="M19,240 Q10,228 5,218 Q12,224 18,234 Q11,222 6,212 Q16,228 19,240Z"/>
-      <path class="twig-leaf" d="M19,240 Q24,230 28,222 Q24,232 20,236 Q26,226 30,218 Q22,232 19,240Z" opacity="0.18"/>
+    <!-- ===== LEAF CLUSTER 3 + FLOWER (Step 3) ===== -->
+    <g class="twig-leaf-wrap" data-leaf="2" style="transform-origin: 26px 237px;">
+      <!-- Left leaves -->
+      <path class="twig-leaf" d="M26,237 Q16,225 10,216 Q17,222 24,233Z"/>
+      <path class="twig-leaf" d="M26,237 Q14,228 8,220 Q16,226 24,235Z" style="opacity:0.6"/>
+      <!-- Right leaves -->
+      <path class="twig-leaf" d="M27,237 Q36,226 42,220 Q36,228 29,234Z"/>
+      <path class="twig-leaf" d="M27,237 Q34,228 40,222 Q34,230 28,235Z" style="opacity:0.5"/>
+    </g>
+    <!-- Flower — blooms on step 3 -->
+    <g class="twig-flower" id="twig-flower" style="transform-origin: 10px 215px;">
+      <circle class="twig-flower-petal" cx="6" cy="212" r="3"/>
+      <circle class="twig-flower-petal" cx="12" cy="210" r="3"/>
+      <circle class="twig-flower-petal" cx="14" cy="216" r="2.5"/>
+      <circle class="twig-flower-petal" cx="8" cy="218" r="2.5"/>
+      <circle class="twig-flower-petal" cx="4" cy="216" r="2.5"/>
+      <circle class="twig-flower-center" cx="9" cy="214.5" r="2"/>
+    </g>
+    <!-- Bee — flies out when flower blooms -->
+    <g class="twig-bee" id="twig-bee" style="transform-origin: 9px 212px;">
+      <ellipse class="twig-bee-body" cx="9" cy="212" rx="2.5" ry="1.8"/>
+      <rect class="twig-bee-stripe" x="7.5" y="211" width="1" height="3.6" rx="0.5"/>
+      <rect class="twig-bee-stripe" x="10" y="211" width="1" height="3.6" rx="0.5"/>
+      <ellipse class="twig-bee-wing" cx="7" cy="210" rx="2" ry="1.2" transform="rotate(-15 7 210)"/>
+      <ellipse class="twig-bee-wing" cx="11" cy="210" rx="2" ry="1.2" transform="rotate(15 11 210)"/>
     </g>
 
-    <!-- Leaf 4 (Step 4) -->
-    <g class="twig-leaf-wrap" data-leaf="3" style="transform-origin: 20px 320px;">
-      <path class="twig-leaf" d="M20,320 Q28,308 34,300 Q28,310 22,316 Q30,306 36,296 Q26,312 20,320Z"/>
-      <path class="twig-leaf" d="M20,320 Q14,310 10,302 Q14,312 19,316 Q12,308 7,298 Q16,312 20,320Z" opacity="0.18"/>
+    <!-- ===== LEAF CLUSTER 4 (Step 4) ===== -->
+    <g class="twig-leaf-wrap" data-leaf="3" style="transform-origin: 28px 319px;">
+      <!-- Right leaves -->
+      <path class="twig-leaf" d="M28,319 Q38,307 44,298 Q38,308 30,316Z"/>
+      <path class="twig-leaf" d="M28,319 Q40,310 46,303 Q39,312 30,317Z" style="opacity:0.6"/>
+      <!-- Left leaves -->
+      <path class="twig-leaf" d="M28,319 Q18,309 12,302 Q19,310 26,317Z"/>
+      <path class="twig-leaf" d="M28,319 Q16,312 10,306 Q17,312 25,318Z" style="opacity:0.5"/>
+      <!-- Extra small leaf -->
+      <path class="twig-leaf" d="M34,310 Q38,304 42,300 Q38,306 35,309Z" style="opacity:0.35"/>
+    </g>
+    <!-- Hummingbird — visits the flower area on step 4 -->
+    <g class="twig-hbird" id="twig-hbird" style="transform-origin: 10px 218px;">
+      <!-- Body -->
+      <ellipse class="twig-hbird-body" cx="6" cy="218" rx="4" ry="2.5" transform="rotate(-10 6 218)"/>
+      <ellipse class="twig-hbird-belly" cx="6.5" cy="219" rx="2.5" ry="1.5" transform="rotate(-10 6.5 219)"/>
+      <!-- Beak -->
+      <line class="twig-hbird-beak" x1="10" y1="217" x2="16" y2="215.5" stroke="#555" stroke-width="0.7" stroke-linecap="round"/>
+      <!-- Wing -->
+      <ellipse class="twig-hbird-wing" cx="5" cy="216" rx="4" ry="2" transform="rotate(-25 5 216)"/>
+      <!-- Tail -->
+      <path d="M2,219 Q-1,222 -2,225" stroke="#5a8c6b" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+      <!-- Eye -->
+      <circle cx="8.5" cy="217" r="0.5" fill="#222"/>
     </g>
 
-    <!-- Leaf 5 (Step 5 — bottom) -->
-    <g class="twig-leaf-wrap" data-leaf="4" style="transform-origin: 20px 392px;">
-      <path class="twig-leaf" d="M20,392 Q12,380 7,370 Q14,376 19,386 Q12,374 7,364 Q16,378 20,392Z"/>
-      <path class="twig-leaf" d="M20,392 Q26,382 30,374 Q26,384 21,388 Q28,378 33,368 Q24,384 20,392Z" opacity="0.18"/>
+    <!-- ===== LEAF CLUSTER 5 (Step 5) ===== -->
+    <g class="twig-leaf-wrap" data-leaf="4" style="transform-origin: 28px 395px;">
+      <!-- Left leaves -->
+      <path class="twig-leaf" d="M28,395 Q18,383 12,374 Q19,380 26,391Z"/>
+      <path class="twig-leaf" d="M28,395 Q16,386 10,378 Q17,384 25,393Z" style="opacity:0.6"/>
+      <!-- Right leaves -->
+      <path class="twig-leaf" d="M28,395 Q36,385 42,378 Q36,386 30,392Z"/>
+      <path class="twig-leaf" d="M28,395 Q38,388 44,382 Q37,390 30,394Z" style="opacity:0.5"/>
+      <!-- Small curled leaf -->
+      <path class="twig-leaf" d="M14,376 Q11,370 10,366 Q13,370 14,374Z" style="opacity:0.35"/>
+      <!-- Tiny bud at bottom -->
+      <ellipse class="twig-leaf" cx="28" cy="404" rx="1.5" ry="3" style="opacity:0.3"/>
     </g>
   </svg>
 </div>
@@ -2062,8 +2231,14 @@ sections.forEach(s => sectionObserver.observe(s));
 /* ===== TWIG PROGRESS ===== */
 const progressTwig = document.getElementById('progress-twig');
 const twigLeaves = document.querySelectorAll('.twig-leaf-wrap');
+const twigFlower = document.getElementById('twig-flower');
+const twigBee = document.getElementById('twig-bee');
+const twigHbird = document.getElementById('twig-hbird');
 const setupSections = document.querySelectorAll('.setup-section');
 let prevActiveLeaf = -1;
+const sproutedSet = new Set();
+let beeTriggered = false;
+let hbirdTriggered = false;
 
 function updateProgress() {
   if (!setupSections.length) return;
@@ -2074,7 +2249,6 @@ function updateProgress() {
 
   if (inSetupZone) {
     progressTwig.classList.add('visible');
-    // Find which step is most centered
     let closestIdx = 0;
     let closestDist = Infinity;
     setupSections.forEach((s, i) => {
@@ -2084,24 +2258,62 @@ function updateProgress() {
       if (dist < closestDist) { closestDist = dist; closestIdx = i; }
     });
 
-    // Activate leaves up to current step, deactivate the rest
     twigLeaves.forEach((leaf, i) => {
-      const paths = leaf.querySelectorAll('.twig-leaf');
       if (i <= closestIdx) {
-        paths.forEach(p => p.classList.add('active'));
-        // Trigger flutter animation when a new leaf activates
+        // Sprout if not yet sprouted
+        if (!sproutedSet.has(i)) {
+          sproutedSet.add(i);
+          leaf.classList.add('sprouting');
+          // After sprout animation, switch to idle sway
+          setTimeout(() => {
+            leaf.classList.remove('sprouting');
+            leaf.classList.add('sprouted', 'idle');
+          }, 720);
+        }
+
+        // Mark active
+        leaf.classList.add('active');
+
+        // Flutter on newly active leaf
         if (i === closestIdx && prevActiveLeaf !== closestIdx) {
-          leaf.classList.remove('flutter');
-          // Force reflow to restart animation
+          leaf.classList.remove('flutter', 'idle');
           void leaf.offsetWidth;
           leaf.classList.add('flutter');
-          // Remove flutter class after animation so idle sway resumes
-          setTimeout(() => leaf.classList.remove('flutter'), 850);
+          setTimeout(() => {
+            leaf.classList.remove('flutter');
+            leaf.classList.add('idle');
+          }, 950);
         }
       } else {
-        paths.forEach(p => p.classList.remove('active'));
+        leaf.classList.remove('active');
       }
     });
+
+    // Flower blooms on step 3
+    if (closestIdx >= 2) {
+      twigFlower.classList.add('bloomed');
+      // Bee flies out shortly after flower blooms
+      if (!beeTriggered && prevActiveLeaf < 2) {
+        beeTriggered = true;
+        setTimeout(() => {
+          twigBee.classList.add('flying');
+          // Remove after animation so it doesn't linger
+          setTimeout(() => twigBee.classList.remove('flying'), 2600);
+        }, 600);
+      }
+    } else {
+      twigFlower.classList.remove('bloomed');
+    }
+
+    // Hummingbird visits on step 4
+    if (closestIdx >= 3 && !hbirdTriggered && prevActiveLeaf < 3) {
+      hbirdTriggered = true;
+      setTimeout(() => {
+        twigHbird.classList.add('visiting');
+        setTimeout(() => twigHbird.classList.remove('visiting'), 3200);
+      }, 400);
+    }
+
     prevActiveLeaf = closestIdx;
   } else {
     progressTwig.classList.remove('visible');
