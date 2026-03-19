@@ -244,23 +244,76 @@ p { color: var(--text-secondary); line-height: 1.7; }
 }
 
 /* ===== PARAMETRIC PROGRESS CURVE ===== */
-.progress-curve {
+.progress-twig {
   position: fixed;
-  left: 20px;
+  left: 18px;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 400px;
+  width: 40px;
+  height: 420px;
   z-index: 100;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.6s ease;
   pointer-events: none;
 }
-.progress-curve.visible { opacity: 1; }
-.progress-curve svg { width: 100%; height: 100%; }
-.progress-dot {
-  fill: var(--text-primary);
-  transition: cy 0.3s var(--ease-out-expo);
+.progress-twig.visible { opacity: 1; }
+.progress-twig svg { width: 100%; height: 100%; overflow: visible; }
+
+/* Twig branch */
+.twig-branch {
+  stroke: #8a7e6b;
+  stroke-width: 1.2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* Leaves */
+.twig-leaf {
+  fill: #a09078;
+  opacity: 0.25;
+  transform-origin: center;
+  transition: opacity 0.6s ease, fill 0.6s ease;
+}
+.twig-leaf.active {
+  fill: #7a8c5a;
+  opacity: 0.85;
+}
+/* Subtle idle sway — each leaf gets a slightly different animation */
+@keyframes leaf-sway-1 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(4deg); }
+}
+@keyframes leaf-sway-2 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+@keyframes leaf-sway-3 {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(3deg); }
+}
+.twig-leaf-wrap {
+  animation: leaf-sway-1 4s ease-in-out infinite;
+}
+.twig-leaf-wrap:nth-child(2n) { animation-name: leaf-sway-2; animation-duration: 4.5s; }
+.twig-leaf-wrap:nth-child(3n) { animation-name: leaf-sway-3; animation-duration: 5s; }
+
+/* Flutter burst when a leaf activates */
+@keyframes leaf-flutter {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-8deg) scale(1.15); }
+  40% { transform: rotate(6deg) scale(1.05); }
+  60% { transform: rotate(-3deg) scale(1.1); }
+  80% { transform: rotate(2deg) scale(1.02); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.twig-leaf-wrap.flutter {
+  animation: leaf-flutter 0.8s ease-out forwards;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .twig-leaf-wrap { animation: none !important; }
+  .twig-leaf-wrap.flutter { animation: none !important; }
 }
 
 /* ===== SETUP SECTIONS ===== */
@@ -986,7 +1039,7 @@ a.portfolio-card:hover .portfolio-card-cta { opacity: 1; }
   .hero-nav { left: 16px; top: 16px; }
   .section-counter { right: 16px; top: 16px; }
   .hero-scroll { bottom: 16px; }
-  .progress-curve { display: none; }
+  .progress-twig { display: none; }
 
   .setup-section { padding: 60px 0; }
   .step-number { font-size: 2.5rem; }
@@ -1027,11 +1080,47 @@ a.portfolio-card:hover .portfolio-card-cta { opacity: 1; }
 <!-- Section Counter -->
 <div class="section-counter" id="section-counter">01 / 09</div>
 
-<!-- Parametric Progress Curve (setup zone only) -->
-<div class="progress-curve" id="progress-curve">
-  <svg viewBox="0 0 30 400" fill="none">
-    <path d="M15,20 Q22,60 15,100 Q8,140 15,180 Q22,220 15,260 Q8,300 15,340 Q22,370 15,380" stroke="#2c2418" stroke-width="0.75" fill="none" opacity="0.15"/>
-    <circle class="progress-dot" id="progress-dot" cx="15" cy="20" r="4" />
+<!-- Twig Progress Indicator (setup zone only) -->
+<div class="progress-twig" id="progress-twig">
+  <svg viewBox="0 0 40 420" fill="none">
+    <!-- Main branch — organic, slightly wobbly -->
+    <path class="twig-branch" d="M20,10 Q22,50 19,90 Q16,130 20,170 Q24,210 18,250 Q14,290 20,330 Q24,365 20,400" opacity="0.3"/>
+    <!-- Smaller side branches -->
+    <path class="twig-branch" d="M19,85 Q14,75 10,68" opacity="0.2" stroke-width="0.8"/>
+    <path class="twig-branch" d="M20,165 Q26,155 30,148" opacity="0.2" stroke-width="0.8"/>
+    <path class="twig-branch" d="M19,245 Q13,237 9,230" opacity="0.2" stroke-width="0.8"/>
+    <path class="twig-branch" d="M20,325 Q27,317 31,310" opacity="0.2" stroke-width="0.8"/>
+    <path class="twig-branch" d="M20,395 Q14,387 10,380" opacity="0.2" stroke-width="0.8"/>
+
+    <!-- Leaf 1 (Step 1 — top) -->
+    <g class="twig-leaf-wrap" data-leaf="0" style="transform-origin: 19px 80px;">
+      <path class="twig-leaf" d="M19,80 Q10,68 6,58 Q12,62 19,72 Q18,60 14,50 Q22,62 19,80Z"/>
+      <path class="twig-leaf" d="M19,80 Q25,70 30,62 Q26,68 21,74 Q27,64 32,56 Q24,68 19,80Z" opacity="0.18"/>
+    </g>
+
+    <!-- Leaf 2 (Step 2) -->
+    <g class="twig-leaf-wrap" data-leaf="1" style="transform-origin: 20px 160px;">
+      <path class="twig-leaf" d="M20,160 Q28,148 33,140 Q28,150 22,156 Q30,146 35,138 Q26,152 20,160Z"/>
+      <path class="twig-leaf" d="M20,160 Q14,150 10,142 Q14,152 19,156 Q12,148 8,140 Q16,152 20,160Z" opacity="0.18"/>
+    </g>
+
+    <!-- Leaf 3 (Step 3) -->
+    <g class="twig-leaf-wrap" data-leaf="2" style="transform-origin: 19px 240px;">
+      <path class="twig-leaf" d="M19,240 Q10,228 5,218 Q12,224 18,234 Q11,222 6,212 Q16,228 19,240Z"/>
+      <path class="twig-leaf" d="M19,240 Q24,230 28,222 Q24,232 20,236 Q26,226 30,218 Q22,232 19,240Z" opacity="0.18"/>
+    </g>
+
+    <!-- Leaf 4 (Step 4) -->
+    <g class="twig-leaf-wrap" data-leaf="3" style="transform-origin: 20px 320px;">
+      <path class="twig-leaf" d="M20,320 Q28,308 34,300 Q28,310 22,316 Q30,306 36,296 Q26,312 20,320Z"/>
+      <path class="twig-leaf" d="M20,320 Q14,310 10,302 Q14,312 19,316 Q12,308 7,298 Q16,312 20,320Z" opacity="0.18"/>
+    </g>
+
+    <!-- Leaf 5 (Step 5 — bottom) -->
+    <g class="twig-leaf-wrap" data-leaf="4" style="transform-origin: 20px 392px;">
+      <path class="twig-leaf" d="M20,392 Q12,380 7,370 Q14,376 19,386 Q12,374 7,364 Q16,378 20,392Z"/>
+      <path class="twig-leaf" d="M20,392 Q26,382 30,374 Q26,384 21,388 Q28,378 33,368 Q24,384 20,392Z" opacity="0.18"/>
+    </g>
   </svg>
 </div>
 
@@ -1970,12 +2059,11 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(s => sectionObserver.observe(s));
 
-/* ===== PROGRESS CURVE ===== */
-const progressCurve = document.getElementById('progress-curve');
-const progressDot = document.getElementById('progress-dot');
+/* ===== TWIG PROGRESS ===== */
+const progressTwig = document.getElementById('progress-twig');
+const twigLeaves = document.querySelectorAll('.twig-leaf-wrap');
 const setupSections = document.querySelectorAll('.setup-section');
-// Anchor Y positions on the curve (matching the SVG path)
-const anchorYs = [20, 100, 180, 260, 340];
+let prevActiveLeaf = -1;
 
 function updateProgress() {
   if (!setupSections.length) return;
@@ -1985,7 +2073,7 @@ function updateProgress() {
   const inSetupZone = firstTop < window.innerHeight && lastBottom > 0;
 
   if (inSetupZone) {
-    progressCurve.classList.add('visible');
+    progressTwig.classList.add('visible');
     // Find which step is most centered
     let closestIdx = 0;
     let closestDist = Infinity;
@@ -1995,9 +2083,28 @@ function updateProgress() {
       const dist = Math.abs(center - window.innerHeight / 2);
       if (dist < closestDist) { closestDist = dist; closestIdx = i; }
     });
-    progressDot.setAttribute('cy', anchorYs[closestIdx]);
+
+    // Activate leaves up to current step, deactivate the rest
+    twigLeaves.forEach((leaf, i) => {
+      const paths = leaf.querySelectorAll('.twig-leaf');
+      if (i <= closestIdx) {
+        paths.forEach(p => p.classList.add('active'));
+        // Trigger flutter animation when a new leaf activates
+        if (i === closestIdx && prevActiveLeaf !== closestIdx) {
+          leaf.classList.remove('flutter');
+          // Force reflow to restart animation
+          void leaf.offsetWidth;
+          leaf.classList.add('flutter');
+          // Remove flutter class after animation so idle sway resumes
+          setTimeout(() => leaf.classList.remove('flutter'), 850);
+        }
+      } else {
+        paths.forEach(p => p.classList.remove('active'));
+      }
+    });
+    prevActiveLeaf = closestIdx;
   } else {
-    progressCurve.classList.remove('visible');
+    progressTwig.classList.remove('visible');
   }
 }
 
